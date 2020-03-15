@@ -1,1 +1,3 @@
-print('Hello World')
+from sections import *
+
+plot_income_vs_experience()
