@@ -21,4 +21,15 @@ As can be seen here, it doesn't look like there is any clear enough link between
 for us to perform an inference. So instead, I decided to fill in the missing values with
 the mean of their column. But before that, I will create 2 boolean columns to indicate
 whether or not the original Salary and Experience column had missing values as this information
-might turn out to be a significant indicator of default.  
+might turn out to be a significant indicator of default.
+
+### Clean Salary column
++ The 'Annual Income' column was renamed to 'Salary'.
++ A new column called 'IsSalaryProvided' was added
++ All NaN values in the Salary column were replaced with the mean of the provided Salary values
+
+### Clean Experience column
++ The 'Years in current job' column was renamed to 'Experience'
++ A new column called 'IsExperienceProvided' was added
++ The Experience column values were quantified and the mean was gotten: 5.88
++ All NaN values in Experience were replaced by the mean

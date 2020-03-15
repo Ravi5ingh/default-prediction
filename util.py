@@ -1,3 +1,7 @@
+###########################################################
+# This file contains miscellaneous utility
+###########################################################
+
 import numpy as np
 
 def experience_str2int(experience_string):
@@ -103,3 +107,12 @@ def pad(ser, result_len, default_val = np.nan):
         raise ValueError('Result length ' + str(result_len) + ' needs to be more than ' + str(ser.size))
 
     return ser.reset_index(drop=True).reindex(range(result_len), fill_value=default_val)
+
+def is_nan(value):
+    """
+    Returns true if value is NaN, false otherwise
+    Parameters:
+         value (Object): An object to test
+    """
+
+    return value != value
