@@ -15,7 +15,7 @@ plotted Salary vs Experience in a box plot.
 
 The following was the result:
 
-![Default](./viz/SalaryVsExperience.PNG)
+![Default](./viz/SalaryVsExperience.png)
 
 As can be seen here, it doesn't look like there is any clear enough link between Salary and Experience
 for us to perform an inference so I investigated other possible correlations
@@ -23,7 +23,7 @@ for us to perform an inference so I investigated other possible correlations
 ### Salary vs Credit Balance
 The following is the scatter plot of Salary vs Credit Balance
 
-![Default](./viz/SalaryVsCreditBalance.PNG)
+![Default](./viz/SalaryVsCreditBalance.png)
 
 This chart looks much better. Even though the correlation isn't clear cut,
 its more than non-existent. As we can see, most of the dots are concentrated
@@ -33,13 +33,13 @@ we can model this is as a log-normal distribution. So for every point on the Cre
 axis, we can take the Salary points and calculate their mean and standard deviation, and 'a' co-efficient.
 The model would end up looking something like this:
 
-![Default](./viz/SalaryVsCreditBalanceModelIntuition.PNG)
+![Default](./viz/SalaryVsCreditBalanceModelIntuition.png)
 
 ### Salary vs Loan
 
 The following is the scatter plot of the Salary vs Loan Amount
 
-![Default](./viz/SalaryVsLoanAmount.PNG)
+![Default](./viz/SalaryVsLoanAmount.png)
 
 This chart also looks interesting. The first remarkable trait is that it forms
 a straight line at the bottom. This indicates that in order to qualify
@@ -51,7 +51,7 @@ values of Salary.
 
 The following is the scatter plot for Salary vs Monthly Debt
 
-![Default](./viz/SalaryVsMonthlyDebt.PNG)
+![Default](./viz/SalaryVsMonthlyDebt.png)
 
 This plot basically looks like a better version of the Salary vs Credit Balance plot
 (ie. It'll be easier to model a lognormal distribution based on this correlation).
