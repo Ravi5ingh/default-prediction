@@ -3,9 +3,21 @@
 # were done to help get some insights
 ###########################################################
 
-import pandas as pd
 from util import *
+
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+
+def show_correlation_matrix():
+
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+
+    corr_matrix = loans.corr()
+
+    sns.heatmap(corr_matrix, xticklabels=corr_matrix.columns, yticklabels=corr_matrix.columns, annot=True)
+
+    plt.show()
 
 def plot_salary_vs_monthly_debt():
 
@@ -111,4 +123,4 @@ def show_quantified_experience_mean():
     print(quantifiedExperience.mean())
 
 
-plot_salary_vs_monthly_debt()
+show_correlation_matrix()

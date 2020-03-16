@@ -18,7 +18,12 @@ The following was the result:
 ![Default](./viz/SalaryVsExperience.png)
 
 As can be seen here, it doesn't look like there is any clear enough link between Salary and Experience
-for us to perform an inference so I investigated other possible correlations
+for us to perform an inference so I investigated other possible correlations.
+
+### Correlation Matrix
+I generated a correlation matrix. This is what I got:
+
+![Default](./viz/CorrelationMatrix.png)
 
 ### Salary vs Credit Balance
 The following is the scatter plot of Salary vs Credit Balance
@@ -55,6 +60,7 @@ The following is the scatter plot for Salary vs Monthly Debt
 
 This plot basically looks like a better version of the Salary vs Credit Balance plot
 (ie. It'll be easier to model a lognormal distribution based on this correlation).
+Alternatively, it maybe better to just fit a simple linear equation to this.
 Also we can see that this plot is flat at the bottom which again seems to 
 indicate that for any given monthly debt, there must be a minimum salary.
 
