@@ -9,6 +9,89 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#Maximum Open Credit
+
+def plot_salary_vs_maximum_open_credit():
+
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+    loans = loans.dropna()
+    loans = loans[loans['Maximum Open Credit'] < 10000000]
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    loans_plot = pd.DataFrame()
+    loans_plot['Salary'] = loans['Annual Income']
+    loans_plot['Maximum Open Credit'] = loans['Maximum Open Credit']
+
+    plot = loans_plot.plot.scatter(x = 'Maximum Open Credit', y='Salary')
+    plot.set_xlabel('Maximum Open Credit')
+    plot.set_ylabel('Salary')
+    plot.set_title('Salary vs Maximum Open Credit')
+
+    plt.show()
+
+
+def plot_salary_vs_tax_liens():
+
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+    loans = loans.dropna()
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    loans_plot = pd.DataFrame()
+    loans_plot['Salary'] = loans['Annual Income']
+    loans_plot['Tax Liens'] = loans['Tax Liens']
+
+    plot = loans_plot.plot.scatter(x = 'Tax Liens', y='Salary')
+    plot.set_xlabel('Tax Liens')
+    plot.set_ylabel('Salary')
+    plot.set_title('Salary vs Tax Liens')
+
+    plt.show()
+
+def plot_salary_vs_number_of_open_accounts():
+
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+    loans = loans.dropna()
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    loans_plot = pd.DataFrame()
+    loans_plot['Salary'] = loans['Annual Income']
+    loans_plot['Number of Open Accounts'] = loans['Number of Open Accounts']
+
+    plot = loans_plot.plot.scatter(x = 'Number of Open Accounts', y='Salary')
+    plot.set_xlabel('Number of Open Accounts')
+    plot.set_ylabel('Salary')
+    plot.set_title('Salary vs Number of Open Accounts')
+
+    plt.show()
+
+
+def plot_salary_vs_years_credit_history():
+
+    # Years of Credit History
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+    loans = loans.dropna()
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    loans_plot = pd.DataFrame()
+    loans_plot['Salary'] = loans['Annual Income']
+    loans_plot['Years of Credit History'] = loans['Years of Credit History']
+
+    plot = loans_plot.plot.scatter(x = 'Years of Credit History', y='Salary')
+    plot.set_xlabel('Years of Credit History')
+    plot.set_ylabel('Salary')
+    plot.set_title('Salary vs Years of Credit History')
+
+    plt.show()
+
+
 def show_correlation_matrix():
 
     loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
@@ -123,4 +206,4 @@ def show_quantified_experience_mean():
     print(quantifiedExperience.mean())
 
 
-show_correlation_matrix()
+plot_salary_vs_maximum_open_credit()

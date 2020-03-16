@@ -25,65 +25,45 @@ I generated a correlation matrix. This is what I got:
 
 ![Default](./viz/CorrelationMatrix.png)
 
-### Salary vs Credit Balance
-The following is the scatter plot of Salary vs Credit Balance
-
-![Default](./viz/SalaryVsCreditBalance.png)
-
-This chart looks much better. Even though the correlation isn't clear cut,
-its more than non-existent. As we can see, most of the dots are concentrated
-at the origin. Intuitively, this means that if the credit balance is lower
-then it means that the salary is more likely lower than higher. Mathematically
-we can model this is as a log-normal distribution. So for every point on the Credit Balance
-axis, we can take the Salary points and calculate their mean and standard deviation, and 'a' co-efficient.
-The model would end up looking something like this:
-
-![Default](./viz/SalaryVsCreditBalanceModelIntuition.png)
-
-### Salary vs Loan
-
-The following is the scatter plot of the Salary vs Loan Amount
-
-![Default](./viz/SalaryVsLoanAmount.png)
-
-This chart also looks interesting. The first remarkable trait is that it forms
-a straight line at the bottom. This indicates that in order to qualify
-for a loan of a specific amount you need to have a minimum salary. This is
-another useful indicator and it enhances our ability to infer the missing
-values of Salary.
-
 ### Salary vs Montly Debt
 
 The following is the scatter plot for Salary vs Monthly Debt
 
 ![Default](./viz/SalaryVsMonthlyDebt.png)
 
-This plot basically looks like a better version of the Salary vs Credit Balance plot
-(ie. It'll be easier to model a lognormal distribution based on this correlation).
-Alternatively, it maybe better to just fit a simple linear equation to this.
-Also we can see that this plot is flat at the bottom which again seems to 
+This plot reveals a remarkable correlation. It looks like a simple linear
+regression model should be good enough to infer Salary from Monthly Debt.
+Also we can see that this plot is flat at the bottom which seems to 
 indicate that for any given monthly debt, there must be a minimum salary.
 
-<!--
+### Salary vs Credit Balance
+The following is the scatter plot of Salary vs Credit Balance
 
-### Clean Salary column
-+ The 'Annual Income' column was renamed to 'Salary'.
-+ A new column called 'IsSalaryProvided' was added
-+ All NaN values in the Salary column were replaced with the mean of the provided Salary values
+![Default](./viz/SalaryVsCreditBalance.png)
 
-### Clean Experience column
-+ The 'Years in current job' column was renamed to 'Experience'
-+ A new column called 'IsExperienceProvided' was added
-+ The Experience column values were quantified and the mean was gotten: 5.88
-+ All NaN values in Experience were replaced by the mean
+The correlation is less clear cut. The monthly debt seems to be a better
+indicator of Salary but there could still be a cool way to infer Salary from
+Credit Balance. As we can see, most of the dots are concentrated at the origin.
+Intuitively, this means that if the credit balance is lower then it means that 
+the salary is more likely lower than higher. Mathematically we can model
+this is as a log-normal distribution. So for every point on the 
+Credit Balance axis, we can take the Salary points and fit a Gaussian curve to their
+density. Then given a Credit Balance value, we could generate a random
+number for the Salary where the probability of getting each value is given
+by the Gaussian we have fitted.
 
-### Delinquency
-There are so many missing values for delinquency that I chose to completely remove it from the pipeline
-for now.
+The model would end up looking something like this:
 
-### Credit Score
-The next step is to do something about the missing values in Credit Score.
-For this I decided to check if there is any correlation between one of the
-existing columns and correlation
+![Default](./viz/SalaryVsCreditBalanceModelIntuition.png)
 
- -->
+Some more scatter plots to reveal the correlation between Salary and other fields:
+
+| | | 
+|:-------------------------:|:-------------------------:|
+![Default](./viz/SalaryVsCreditHistory.png)|![Default](./viz/SalaryVsNumberOfOpenAccounts.png)
+![Default](./viz/SalaryVsTaxLiens.png)|![Default](./viz/SalaryVsMaxOpenCredit.png)
+![Default](./viz/SalaryVsLoanAmount.png) |
+
+The Salary vs Loan Amount looks interesting. It is flat at the bottom. 
+This indicates that in order to qualify for a loan of a specific amount you need to have 
+a minimum salary.
