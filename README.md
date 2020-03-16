@@ -67,3 +67,12 @@ Some more scatter plots to reveal the correlation between Salary and other field
 The Salary vs Loan Amount looks interesting. It is flat at the bottom. 
 This indicates that in order to qualify for a loan of a specific amount you need to have 
 a minimum salary.
+
+### Salary vs Monthly Debt Linear Regression
+
+Numpy was used to do a linear regression on Salary vs Monthly Debt. Result:
++ Slope: 41.6727
++ y-intercept: 669394
+
+Plot:
+![Default](./viz/SalaryVsMonthlyDebt_LinReg.png)

@@ -9,7 +9,32 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#Maximum Open Credit
+def plot_lin_reg_on_salary_vs_monthly_debt():
+
+    loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+    loans = loans.dropna()
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    plt.xlabel('Monthly Debt')# .Axes.set_xlabel('Monthly Debt')
+    plt.ylabel('Salary') #.Axes.set_ylabel('Salary')
+    plt.title('Salary vs Monthly Debt') # Axes.set_title('Salary vs Monthly Debt')
+
+    x = np.array(loans['Monthly Debt'])
+    y = np.array(loans['Annual Income'])
+
+    plt.plot(x, y, 'o')
+
+    m, b = np.polyfit(x, y, deg=1)
+
+    print(m)
+    print(b)
+
+    plt.plot(x, m*x + b)
+
+    plt.show()
+
 
 def plot_salary_vs_maximum_open_credit():
 
@@ -206,4 +231,4 @@ def show_quantified_experience_mean():
     print(quantifiedExperience.mean())
 
 
-plot_salary_vs_maximum_open_credit()
+plot_lin_reg_on_salary_vs_monthly_debt()
