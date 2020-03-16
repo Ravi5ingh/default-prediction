@@ -2,8 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = 5.88
+from util import *
 
-print(round(x))
+loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+loans = loans.dropna()
 
-plt.show()
+loans_plot = pd.DataFrame()
+loans_plot['Salary'] = loans['Annual Income']
+ll = loans[loans['Current Loan Amount'] < 99999999]
+
+print(ll)

@@ -15,4 +15,6 @@ from forks import *
 
 # show_quantified_experience_mean()
 
-quantify_experience_and_fill_na_values()
+# quantify_experience_and_fill_na_values()
+
+remove_delinquency()

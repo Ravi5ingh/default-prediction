@@ -7,7 +7,7 @@ You can find it [here](https://www.kaggle.com/c/credit-default-prediction-ai-big
 The first step is do do something about missing values. 
 There is missing data in the columns for salary, experience, delinquency, and credit scores.
 
-### Salary and Experience
+### Salary vs Experience
 My first intuition was that there may be a correlation between Salary and Experience. 
 If this were true, we could at-least infer values for Salary or Experience where 1 is missing. 
 To test this theory, I removed all records where either was missing and 
@@ -18,10 +18,47 @@ The following was the result:
 ![Default](./viz/SalaryVsExperience.PNG)
 
 As can be seen here, it doesn't look like there is any clear enough link between Salary and Experience
-for us to perform an inference. So instead, I decided to fill in the missing values with
-the mean of their column. But before that, I will create 2 boolean columns to indicate
-whether or not the original Salary and Experience column had missing values as this information
-might turn out to be a significant indicator of default.
+for us to perform an inference so I investigated other possible correlations
+
+### Salary vs Credit Balance
+The following is the scatter plot of Salary vs Credit Balance
+
+![Default](./viz/SalaryVsCreditBalance.PNG)
+
+This chart looks much better. Even though the correlation isn't clear cut,
+its more than non-existent. As we can see, most of the dots are concentrated
+at the origin. Intuitively, this means that if the credit balance is lower
+then it means that the salary is more likely lower than higher. Mathematically
+we can model this is as a log-normal distribution. So for every point on the Credit Balance
+axis, we can take the Salary points and calculate their mean and standard deviation, and 'a' co-efficient.
+The model would end up looking something like this:
+
+![Default](./viz/SalaryVsCreditBalanceModelIntuition.PNG)
+
+### Salary vs Loan
+
+The following is the scatter plot of the Salary vs Loan Amount
+
+![Default](./viz/SalaryVsLoanAmount.PNG)
+
+This chart also looks interesting. The first remarkable trait is that it forms
+a straight line at the bottom. This indicates that in order to qualify
+for a loan of a specific amount you need to have a minimum salary. This is
+another useful indicator and it enhances our ability to infer the missing
+values of Salary.
+
+### Salary vs Montly Debt
+
+The following is the scatter plot for Salary vs Monthly Debt
+
+![Default](./viz/SalaryVsMonthlyDebt.PNG)
+
+This plot basically looks like a better version of the Salary vs Credit Balance plot
+(ie. It'll be easier to model a lognormal distribution based on this correlation).
+Also we can see that this plot is flat at the bottom which again seems to 
+indicate that for any given monthly debt, there must be a minimum salary.
+
+<!--
 
 ### Clean Salary column
 + The 'Annual Income' column was renamed to 'Salary'.
@@ -33,3 +70,14 @@ might turn out to be a significant indicator of default.
 + A new column called 'IsExperienceProvided' was added
 + The Experience column values were quantified and the mean was gotten: 5.88
 + All NaN values in Experience were replaced by the mean
+
+### Delinquency
+There are so many missing values for delinquency that I chose to completely remove it from the pipeline
+for now.
+
+### Credit Score
+The next step is to do something about the missing values in Credit Score.
+For this I decided to check if there is any correlation between one of the
+existing columns and correlation
+
+ -->
