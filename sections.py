@@ -17,6 +17,22 @@ def add_column_for_salary_provided():
 
     loans.to_csv('data/1_WithSalaryProvidedColumn.csv', index=False)
 
+def infer_salary(m, b):
+    """
+    Based on the slope and y-intercept fitted in the linear regression, infers the missing values for the salary
+    :param m: The slope
+    :param b: The y-intercept
+    """
+
+    loans = pd.read_csv('data/1_WithSalaryProvidedColumn.csv').pipe(reduce_mem_usage)
+
+    inferred_salary = map(lambda pair: m*pair[0] + b if is_nan(pair[1]) else pair[1], zip(loans['Monthly Debt'], loans['Salary']))
+
+    loans['Salary'] = pd.Series(inferred_salary)
+
+    loans.to_csv('data/2_WithInferredSalary.csv', index=False)
+
+
 def fill_salary_na_with_mean():
     """
     Fill na values in salary with mean
@@ -28,7 +44,7 @@ def fill_salary_na_with_mean():
 
     loans['Salary'] = loans['Salary'].fillna(providedSalaryMean)
 
-    loans.to_csv('data/2_WithSalaryNaFilled.csv', index=False)
+    loans.to_csv('data/2_WithSalafill_salary_na_with_meanryNaFilled.csv', index=False)
 
 def add_column_for_experience_provided():
     """
@@ -45,6 +61,7 @@ def add_column_for_experience_provided():
 def quantify_experience_and_fill_na_values():
     """
     Quantifies the experience and replaces NaN values with the mean
+
     """
 
     loans = pd.read_csv('data/3_WithExperienceProvidedColumn.csv').pipe(reduce_mem_usage)

@@ -9,7 +9,7 @@ from forks import *
 
 # add_columns_for_salary_missing()
 
-# fill_salary_na_with_mean()
+# infer_salary(41.6727, 669394) # The slope and y-intercept was retreived from forks
 
 # add_column_for_experience_provided()
 
@@ -17,4 +17,4 @@ from forks import *
 
 # quantify_experience_and_fill_na_values()
 
-remove_delinquency()
+# remove_delinquency()

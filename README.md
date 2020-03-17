@@ -76,3 +76,9 @@ Numpy was used to do a linear regression on Salary vs Monthly Debt. Result:
 
 Plot:
 ![Default](./viz/SalaryVsMonthlyDebt_LinReg.png)
+
+This was used to then infer the missing values for Salary and we get the following plot:
+![Default](./viz/SalaryVsMonthlyDebt_Inferred.png)
+
+### Filling in missing values for Experience
+TBC...

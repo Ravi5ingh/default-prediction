@@ -5,13 +5,13 @@ import seaborn as sns
 
 from util import *
 
-loans = pd.read_csv('data/train.csv').pipe(reduce_mem_usage)
+loans = pd.read_csv('data/1_WithSalaryProvidedColumn.csv').pipe(reduce_mem_usage)
 
-corr_matrix = loans.corr()
+print(loans['Salary'])
 
-sns.heatmap(corr_matrix, xticklabels=corr_matrix.columns, yticklabels=corr_matrix.columns, annot=True)
+inferred = map(lambda pair: 2*pair[0] + 1 if is_nan(pair[1]) else pair[1]), zip(loans['Monthly Debt'], loans['Salary'])
 
-plt.show()
+
 
 # loans = loans.dropna()
 #

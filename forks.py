@@ -28,8 +28,8 @@ def plot_lin_reg_on_salary_vs_monthly_debt():
 
     m, b = np.polyfit(x, y, deg=1)
 
-    print(m)
-    print(b)
+    # print(m)
+    # print(b)
 
     plt.plot(x, m*x + b)
 
@@ -126,6 +126,25 @@ def show_correlation_matrix():
     sns.heatmap(corr_matrix, xticklabels=corr_matrix.columns, yticklabels=corr_matrix.columns, annot=True)
 
     plt.show()
+
+def plot_inferred_salary_vs_monthly_debt():
+
+    loans = pd.read_csv('data/2_WithInferredSalary.csv').pipe(reduce_mem_usage)
+
+    plt.rc('axes', labelsize=15) # Axis Font
+    plt.rc('axes', titlesize=22) # Title Font
+
+    loans_plot = pd.DataFrame()
+    loans_plot['Salary'] = loans['Salary']
+    loans_plot['Monthly Debt'] = loans['Monthly Debt']
+
+    plot = loans_plot.plot.scatter(x = 'Monthly Debt', y='Salary')
+    plot.set_xlabel('Monthly Debt')
+    plot.set_ylabel('Salary')
+    plot.set_title('Salary vs Monthly Debt')
+
+    plt.show()
+
 
 def plot_salary_vs_monthly_debt():
 
@@ -229,6 +248,3 @@ def show_quantified_experience_mean():
     quantifiedExperience = loans['Experience'].dropna().apply(experience_str2int)
 
     print(quantifiedExperience.mean())
-
-
-plot_lin_reg_on_salary_vs_monthly_debt()
